@@ -1,4 +1,6 @@
 class Post
+  include DB::Serializable
+
   getter id : Int64?
   getter title : String
   getter body : String
@@ -17,33 +19,15 @@ class Post
   def self.all : Array(Post)
     Blog::Database.connection.query_all(
       "SELECT id, title, body, created_at, updated_at FROM posts ORDER BY id DESC",
-      as: {Int64, String, String, String, String}
-    ).map do |row|
-      new(
-        id: row[0],
-        title: row[1],
-        body: row[2],
-        created_at: row[3],
-        updated_at: row[4]
-      )
-    end
+      as: Post
+    )
   end
 
   def self.find(id : Int64) : Post?
-    row = Blog::Database.connection.query_one?(
+    Blog::Database.connection.query_one?(
       "SELECT id, title, body, created_at, updated_at FROM posts WHERE id = ?",
       id,
-      as: {Int64, String, String, String, String}
-    )
-
-    return unless row
-
-    new(
-      id: row[0],
-      title: row[1],
-      body: row[2],
-      created_at: row[3],
-      updated_at: row[4]
+      as: Post
     )
   end
 
