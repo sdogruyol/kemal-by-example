@@ -37,6 +37,17 @@ This repository collects example applications built with `Kemal`, with a focus o
 - `todo-app/`
 - `url-shortener/`
 
+## Getting Started
+
+Clone the repository first:
+
+```bash
+git clone https://github.com/sdogruyol/kemal-by-example
+cd kemal-by-example
+```
+
+Then choose one of the example applications below and run it from its own directory.
+
 ## Running The Projects
 
 Each project is self-contained. Open a terminal, move into the project directory, install dependencies, and run the app with Crystal.
