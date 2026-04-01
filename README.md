@@ -18,13 +18,16 @@ This repository collects example applications built with `Kemal`, with a focus o
 - Provide practical example projects instead of isolated snippets
 - Keep each application easy to read, extend, and learn from
 
-## Planned Projects
+## Completed Projects
 
 - Blog
-- E-commerce
 - Twitter clone
 - Todo app
 - URL shortener
+
+## Upcoming Project
+
+- E-commerce
 
 ## Directory Structure
 
@@ -33,3 +36,47 @@ This repository collects example applications built with `Kemal`, with a focus o
 - `twitter-clone/`
 - `todo-app/`
 - `url-shortener/`
+
+## Running The Projects
+
+Each project is self-contained. Open a terminal, move into the project directory, install dependencies, and run the app with Crystal.
+
+### Blog
+
+```bash
+cd blog
+shards install
+crystal run src/blog.cr
+```
+
+Then open `http://127.0.0.1:3000`.
+
+### Todo App
+
+```bash
+cd todo-app
+shards install
+crystal run src/todo_app.cr
+```
+
+Then open `http://127.0.0.1:3000`.
+
+### URL Shortener
+
+```bash
+cd url-shortener
+shards install
+crystal run src/url_shortener.cr
+```
+
+Then open `http://127.0.0.1:3000`.
+
+### Twitter Clone
+
+```bash
+cd twitter-clone
+shards install
+crystal run src/twitter_clone.cr
+```
+
+Then open `http://127.0.0.1:3000`.
