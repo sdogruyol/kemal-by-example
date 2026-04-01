@@ -1,0 +1,10 @@
+/.crystal/
+/lib/
+/bin/
+
+/db/*.db
+/db/*.sqlite
+/db/*.sqlite3
+
+todo_app
+todo_app.dwarf

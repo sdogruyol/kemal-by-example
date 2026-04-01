@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo App</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f8fafc;
+        color: #0f172a;
+      }
+
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 16px 48px;
+      }
+
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+
+      .card {
+        background: #ffffff;
+        border: 1px solid #dbe3ee;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .stack > * + * {
+        margin-top: 12px;
+      }
+
+      .todo-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .todo-meta {
+        color: #64748b;
+        font-size: 14px;
+      }
+
+      .todo-details {
+        white-space: pre-wrap;
+      }
+
+      .todo-completed {
+        opacity: 0.75;
+      }
+
+      .todo-completed h2 {
+        text-decoration: line-through;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+
+      form {
+        margin: 0;
+      }
+
+      input[type="text"],
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font: inherit;
+        background: #fff;
+      }
+
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .checkbox-row input {
+        width: auto;
+      }
+
+      button,
+      .button-link {
+        display: inline-block;
+        border: 0;
+        border-radius: 8px;
+        padding: 10px 14px;
+        background: #2563eb;
+        color: #fff;
+        font: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .button-link.secondary,
+      button.secondary {
+        background: #64748b;
+      }
+
+      button.success {
+        background: #16a34a;
+      }
+
+      button.danger {
+        background: #dc2626;
+      }
+
+      .empty-state {
+        color: #64748b;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <%= content %>
+    </main>
+  </body>
+</html>

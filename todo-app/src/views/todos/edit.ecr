@@ -1,0 +1,32 @@
+<section class="card">
+  <h1>Edit Todo</h1>
+  <p>Update the selected task.</p>
+
+  <form class="stack" action="/todos/<%= todo.id %>" method="post">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" type="text" name="title" value="<%= todo.title %>" required>
+    </div>
+
+    <div>
+      <label for="details">Details</label>
+      <textarea id="details" name="details"><%= todo.details %></textarea>
+    </div>
+
+    <label class="checkbox-row" for="completed">
+      <input
+        id="completed"
+        type="checkbox"
+        name="completed"
+        value="true"
+        <%= "checked" if todo.completed? %>
+      >
+      Completed
+    </label>
+
+    <div class="actions">
+      <button type="submit">Update todo</button>
+      <a class="button-link secondary" href="/todos">Back to todos</a>
+    </div>
+  </form>
+</section>

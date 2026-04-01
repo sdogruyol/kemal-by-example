@@ -1,0 +1,56 @@
+<section class="card">
+  <h1>Todo App</h1>
+  <p>Create, track, update, complete, and delete tasks.</p>
+
+  <form class="stack" action="/todos" method="post">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" type="text" name="title" placeholder="What needs to be done?" required>
+    </div>
+
+    <div>
+      <label for="details">Details</label>
+      <textarea id="details" name="details" placeholder="Optional notes for this task"></textarea>
+    </div>
+
+    <div>
+      <button type="submit">Add todo</button>
+    </div>
+  </form>
+</section>
+
+<section class="todo-list">
+  <% if todos.empty? %>
+    <div class="card">
+      <p class="empty-state">No todos have been created yet.</p>
+    </div>
+  <% else %>
+    <% todos.each do |todo| %>
+      <article class="card <%= "todo-completed" if todo.completed? %>">
+        <h2><%= todo.title %></h2>
+
+        <% unless todo.details.empty? %>
+          <p class="todo-details"><%= todo.details %></p>
+        <% end %>
+
+        <p class="todo-meta">Status: <%= todo.completed? ? "Completed" : "Pending" %></p>
+        <p class="todo-meta">Created at: <%= todo.created_at %></p>
+        <p class="todo-meta">Updated at: <%= todo.updated_at %></p>
+
+        <div class="actions">
+          <form action="/todos/<%= todo.id %>/toggle" method="post">
+            <button class="<%= todo.completed? ? "secondary" : "success" %>" type="submit">
+              <%= todo.completed? ? "Mark as pending" : "Mark as completed" %>
+            </button>
+          </form>
+
+          <a class="button-link secondary" href="/todos/<%= todo.id %>/edit">Edit</a>
+
+          <form action="/todos/<%= todo.id %>/delete" method="post">
+            <button class="danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </article>
+    <% end %>
+  <% end %>
+</section>
