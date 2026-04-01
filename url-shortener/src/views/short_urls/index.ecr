@@ -1,0 +1,52 @@
+<section class="card">
+  <h1>URL Shortener</h1>
+  <p>Create compact links with `Kemal`, `SQLite`, and `ECR`.</p>
+
+  <form class="stack" action="/links" method="post">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" type="text" name="title" placeholder="Optional label for this link">
+    </div>
+
+    <div>
+      <label for="original_url">Original URL</label>
+      <input id="original_url" type="url" name="original_url" placeholder="https://example.com/some/long/path" required>
+    </div>
+
+    <div>
+      <button type="submit">Create short URL</button>
+    </div>
+  </form>
+</section>
+
+<section class="url-list">
+  <% if short_urls.empty? %>
+    <div class="card">
+      <p class="empty-state">No short URLs have been created yet.</p>
+    </div>
+  <% else %>
+    <% short_urls.each do |short_url| %>
+      <article class="card">
+        <h2><%= short_url.display_title %></h2>
+        <p class="short-link">
+          <a href="/<%= short_url.short_code %>" target="_blank"><%= base_url %>/<%= short_url.short_code %></a>
+        </p>
+        <p class="target-link">
+          Target:
+          <a href="<%= short_url.original_url %>" target="_blank"><%= short_url.original_url %></a>
+        </p>
+        <p class="meta">Clicks: <%= short_url.click_count %></p>
+        <p class="meta">Created at: <%= short_url.created_at %></p>
+        <p class="meta">Updated at: <%= short_url.updated_at %></p>
+
+        <div class="actions">
+          <a class="button-link secondary" href="/links/<%= short_url.id %>/edit">Edit</a>
+
+          <form action="/links/<%= short_url.id %>/delete" method="post">
+            <button class="danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </article>
+    <% end %>
+  <% end %>
+</section>
