@@ -21,13 +21,10 @@ This repository collects example applications built with `Kemal`, with a focus o
 ## Completed Projects
 
 - Blog
+- E-commerce
 - Twitter clone
 - Todo app
 - URL shortener
-
-## Upcoming Project
-
-- E-commerce
 
 ## Directory Structure
 
@@ -58,6 +55,16 @@ Each project is self-contained. Open a terminal, move into the project directory
 cd blog
 shards install
 crystal run src/blog.cr
+```
+
+Then open `http://127.0.0.1:3000`.
+
+### E-commerce
+
+```bash
+cd ecommerce
+shards install
+crystal run src/ecommerce.cr
 ```
 
 Then open `http://127.0.0.1:3000`.
