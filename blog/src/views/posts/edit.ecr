@@ -1,0 +1,21 @@
+<section class="card">
+  <h1>Edit Post</h1>
+  <p>Update the selected blog post.</p>
+
+  <form class="stack" action="/posts/<%= post.id %>" method="post">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" type="text" name="title" value="<%= post.title %>" required>
+    </div>
+
+    <div>
+      <label for="body">Body</label>
+      <textarea id="body" name="body" required><%= post.body %></textarea>
+    </div>
+
+    <div class="actions">
+      <button type="submit">Update post</button>
+      <a class="button-link secondary" href="/posts">Back to posts</a>
+    </div>
+  </form>
+</section>

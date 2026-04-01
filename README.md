@@ -2,6 +2,11 @@
 
 This directory contains example projects that will be built with the `Kemal` web framework.
 
+## Shared Stack
+
+- Web framework: `Kemal`
+- Database: `SQLite`
+
 ## Planned Projects
 
 - Blog

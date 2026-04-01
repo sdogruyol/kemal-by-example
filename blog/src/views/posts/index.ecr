@@ -1,0 +1,45 @@
+<section class="card">
+  <h1>Blog Posts</h1>
+  <p>Create, edit, update, and delete posts with Kemal and SQLite.</p>
+
+  <form class="stack" action="/posts" method="post">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" type="text" name="title" placeholder="Post title" required>
+    </div>
+
+    <div>
+      <label for="body">Body</label>
+      <textarea id="body" name="body" placeholder="Write your post" required></textarea>
+    </div>
+
+    <div>
+      <button type="submit">Create post</button>
+    </div>
+  </form>
+</section>
+
+<section>
+  <% if posts.empty? %>
+    <div class="card">
+      <p class="empty-state">No posts have been created yet.</p>
+    </div>
+  <% else %>
+    <% posts.each do |post| %>
+      <article class="card">
+        <h2><%= post.title %></h2>
+        <p class="post-body"><%= post.body %></p>
+        <p>Created at: <%= post.created_at %></p>
+        <p>Updated at: <%= post.updated_at %></p>
+
+        <div class="actions">
+          <a class="button-link secondary" href="/posts/<%= post.id %>/edit">Edit</a>
+
+          <form action="/posts/<%= post.id %>/delete" method="post">
+            <button class="danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </article>
+    <% end %>
+  <% end %>
+</section>
