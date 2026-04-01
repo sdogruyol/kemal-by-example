@@ -1,0 +1,64 @@
+<section class="hero">
+  <h1>Your Cart</h1>
+  <p>Review selected products, adjust quantities, and complete a simple checkout.</p>
+</section>
+
+<% if checkout_notice %>
+  <div class="notice">Checkout complete. Your cart has been cleared.</div>
+<% end %>
+
+<% if cart_lines.empty? %>
+  <section class="card">
+    <h2>Your cart is empty</h2>
+    <p class="meta">Browse the product catalog and add something to get started.</p>
+    <a class="button-link" href="/products">Browse products</a>
+  </section>
+<% else %>
+  <section class="card">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% cart_lines.each do |line| %>
+          <tr>
+            <td>
+              <strong><%= line.name %></strong>
+              <div class="meta"><%= line.description %></div>
+            </td>
+            <td><%= line.formatted_price %></td>
+            <td>
+              <form class="inline" action="/cart/items/<%= line.id %>" method="post">
+                <input type="number" min="1" name="quantity" value="<%= line.quantity %>">
+                <button class="secondary" type="submit">Update</button>
+              </form>
+            </td>
+            <td><%= line.formatted_line_total %></td>
+            <td>
+              <form action="/cart/items/<%= line.id %>/delete" method="post">
+                <button class="danger" type="submit">Remove</button>
+              </form>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card stack">
+    <div>
+      <strong>Order Total</strong>
+      <div class="meta"><%= total_price %></div>
+    </div>
+
+    <form action="/cart/checkout" method="post">
+      <button class="success" type="submit">Checkout</button>
+    </form>
+  </section>
+<% end %>

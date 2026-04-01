@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E-commerce</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f8fafc;
+        color: #0f172a;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      header {
+        background: #0f172a;
+        color: #fff;
+      }
+
+      .nav {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 18px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links,
+      .nav-actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px 16px 48px;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        color: #fff;
+        border-radius: 20px;
+        padding: 28px;
+        margin-bottom: 24px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid #dbe3ee;
+        border-radius: 16px;
+        padding: 20px;
+      }
+
+      .stack > * + * {
+        margin-top: 12px;
+      }
+
+      .meta {
+        color: #64748b;
+      }
+
+      .notice {
+        background: #dcfce7;
+        color: #166534;
+        border: 1px solid #86efac;
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin-bottom: 16px;
+      }
+
+      .error {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin-bottom: 16px;
+      }
+
+      form {
+        margin: 0;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="number"] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        font: inherit;
+      }
+
+      button,
+      .button-link {
+        display: inline-block;
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 14px;
+        background: #2563eb;
+        color: #fff;
+        font: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .button-link.secondary,
+      button.secondary {
+        background: #64748b;
+      }
+
+      button.success {
+        background: #16a34a;
+      }
+
+      button.danger {
+        background: #dc2626;
+      }
+
+      .inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .cart-table th,
+      .cart-table td {
+        padding: 12px 8px;
+        border-bottom: 1px solid #e2e8f0;
+        text-align: left;
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="nav-links">
+          <strong>E-commerce</strong>
+          <a href="/products">Products</a>
+          <a href="/cart">Cart (<%= cart_count %>)</a>
+        </div>
+
+        <div class="nav-actions">
+          <% if current_user %>
+            <span>Signed in as <strong><%= current_user.name %></strong></span>
+            <form action="/logout" method="post">
+              <button class="secondary" type="submit">Logout</button>
+            </form>
+          <% else %>
+            <a class="button-link secondary" href="/login">Login</a>
+            <a class="button-link" href="/signup">Create account</a>
+          <% end %>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <%= content %>
+    </main>
+  </body>
+</html>

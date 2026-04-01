@@ -1,0 +1,29 @@
+<section class="card" style="max-width: 560px; margin: 0 auto;">
+  <h1>Create Account</h1>
+  <p class="meta">Sign up to start adding products to your cart and complete checkout.</p>
+
+  <% if error_message %>
+    <div class="error"><%= error_message %></div>
+  <% end %>
+
+  <form class="stack" action="/signup" method="post">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" type="text" name="name" placeholder="Jane Doe" required>
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" placeholder="jane@example.com" required>
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Create a password" required>
+    </div>
+
+    <div>
+      <button type="submit">Create account</button>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,29 @@
+<section class="hero">
+  <h1>Kemal Storefront</h1>
+  <p>Browse products, sign in, add items to your cart, and complete a lightweight checkout flow powered by Kemal and SQLite.</p>
+</section>
+
+<section class="grid products-grid">
+  <% products.each do |product| %>
+    <article class="card stack">
+      <div>
+        <h2><%= product.name %></h2>
+        <p class="meta"><%= product.formatted_price %></p>
+      </div>
+
+      <p><%= product.description %></p>
+      <p class="meta">Inventory: <%= product.inventory_count %></p>
+
+      <form action="/cart/items" method="post">
+        <input type="hidden" name="product_id" value="<%= product.id %>">
+        <button class="success" type="submit" <%= "disabled" unless product.available? %>>
+          <%= product.available? ? "Add to cart" : "Out of stock" %>
+        </button>
+      </form>
+
+      <% unless current_user %>
+        <p class="meta">Create an account or log in to add this product to your cart.</p>
+      <% end %>
+    </article>
+  <% end %>
+</section>

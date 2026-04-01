@@ -1,0 +1,24 @@
+<section class="card" style="max-width: 560px; margin: 0 auto;">
+  <h1>Login</h1>
+  <p class="meta">Sign in to manage your shopping cart and checkout.</p>
+
+  <% if error_message %>
+    <div class="error"><%= error_message %></div>
+  <% end %>
+
+  <form class="stack" action="/login" method="post">
+    <div>
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" placeholder="jane@example.com" required>
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Your password" required>
+    </div>
+
+    <div>
+      <button type="submit">Login</button>
+    </div>
+  </form>
+</section>
