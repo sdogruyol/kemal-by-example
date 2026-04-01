@@ -1,0 +1,26 @@
+<section class="card">
+  <h1>Edit Tweet</h1>
+  <p>Update the author details or tweet content.</p>
+
+  <form class="stack" action="/tweets/<%= tweet.id %>" method="post">
+    <div>
+      <label for="display_name">Display name</label>
+      <input id="display_name" type="text" name="display_name" value="<%= tweet.display_name %>" required>
+    </div>
+
+    <div>
+      <label for="username">Username</label>
+      <input id="username" type="text" name="username" value="<%= tweet.username %>" required>
+    </div>
+
+    <div>
+      <label for="body">Tweet</label>
+      <textarea id="body" name="body" required><%= tweet.body %></textarea>
+    </div>
+
+    <div class="actions">
+      <button type="submit">Update tweet</button>
+      <a class="button-link secondary" href="/timeline">Back to timeline</a>
+    </div>
+  </form>
+</section>

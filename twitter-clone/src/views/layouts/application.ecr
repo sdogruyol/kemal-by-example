@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Twitter Clone</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #eaf2ff;
+        color: #0f172a;
+      }
+
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 32px 16px 48px;
+      }
+
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #1d9bf0, #2563eb);
+        color: #fff;
+        border-radius: 20px;
+        padding: 24px;
+        margin-bottom: 24px;
+      }
+
+      .card {
+        background: #ffffff;
+        border: 1px solid #dbe3ee;
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .stack > * + * {
+        margin-top: 12px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 16px;
+      }
+
+      .tweet-header {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: baseline;
+      }
+
+      .handle,
+      .meta {
+        color: #64748b;
+      }
+
+      .tweet-body {
+        white-space: pre-wrap;
+        line-height: 1.5;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+
+      form {
+        margin: 0;
+      }
+
+      input[type="text"],
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        font: inherit;
+        background: #fff;
+      }
+
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      button,
+      .button-link {
+        display: inline-block;
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 16px;
+        background: #1d9bf0;
+        color: #fff;
+        font: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .button-link.secondary {
+        background: #64748b;
+      }
+
+      button.danger {
+        background: #dc2626;
+      }
+
+      button.like {
+        background: #ec4899;
+      }
+
+      .empty-state {
+        color: #64748b;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <%= content %>
+    </main>
+  </body>
+</html>

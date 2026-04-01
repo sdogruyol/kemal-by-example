@@ -1,0 +1,63 @@
+<section class="hero">
+  <h1>Twitter Clone</h1>
+  <p>Share quick thoughts, post updates, and interact with a simple Kemal-powered timeline.</p>
+</section>
+
+<section class="card">
+  <h2>Create Tweet</h2>
+
+  <form class="stack" action="/tweets" method="post">
+    <div>
+      <label for="display_name">Display name</label>
+      <input id="display_name" type="text" name="display_name" placeholder="Jane Doe" required>
+    </div>
+
+    <div>
+      <label for="username">Username</label>
+      <input id="username" type="text" name="username" placeholder="@janedoe" required>
+    </div>
+
+    <div>
+      <label for="body">Tweet</label>
+      <textarea id="body" name="body" placeholder="What's happening?" required></textarea>
+    </div>
+
+    <div>
+      <button type="submit">Post tweet</button>
+    </div>
+  </form>
+</section>
+
+<section class="timeline">
+  <% if tweets.empty? %>
+    <div class="card">
+      <p class="empty-state">The timeline is empty. Create the first tweet.</p>
+    </div>
+  <% else %>
+    <% tweets.each do |tweet| %>
+      <article class="card">
+        <div class="tweet-header">
+          <h2><%= tweet.display_name %></h2>
+          <span class="handle"><%= tweet.handle %></span>
+        </div>
+
+        <p class="tweet-body"><%= tweet.body %></p>
+        <p class="meta">Likes: <%= tweet.likes_count %></p>
+        <p class="meta">Created at: <%= tweet.created_at %></p>
+        <p class="meta">Updated at: <%= tweet.updated_at %></p>
+
+        <div class="actions">
+          <form action="/tweets/<%= tweet.id %>/like" method="post">
+            <button class="like" type="submit">Like</button>
+          </form>
+
+          <a class="button-link secondary" href="/tweets/<%= tweet.id %>/edit">Edit</a>
+
+          <form action="/tweets/<%= tweet.id %>/delete" method="post">
+            <button class="danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </article>
+    <% end %>
+  <% end %>
+</section>

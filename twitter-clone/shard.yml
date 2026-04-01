@@ -1,0 +1,21 @@
+name: twitter_clone
+version: 0.1.0
+
+authors:
+  - Bedo
+
+targets:
+  twitter_clone:
+    main: src/twitter_clone.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  db:
+    github: crystal-lang/crystal-db
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+
+crystal: ">= 1.12.0"
+
+license: MIT
