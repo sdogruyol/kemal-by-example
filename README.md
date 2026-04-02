@@ -28,6 +28,7 @@ This repository collects practical projects built with [`Kemal`](https://kemalcr
 - `URL shortener` - A compact link shortener with redirect tracking, built with `Kemal`, `SQLite`, and `ECR`.
 - `JSON API` - A REST JSON API for notes (`GET`/`POST`/`PUT`/`PATCH`/`DELETE` under `/api/notes`), built with `Kemal`, `SQLite`, and Crystal’s `JSON` module.
 - `OAuth login` - GitHub OAuth2 sign-in with session-backed user records, built with `Kemal`, `SQLite`, `ECR`, and `kemal-session`.
+- `Webhook inbox` - Inbound webhook receiver using [kemal-hmac](https://github.com/kemalcr/kemal-hmac) when `WEBHOOK_SECRET` is set, plus a small inbox UI, built with `Kemal`, `SQLite`, and `ECR`.
 
 ## Realtime Projects (`WebSockets`)
 
@@ -45,6 +46,7 @@ This repository collects practical projects built with [`Kemal`](https://kemalcr
 - `url-shortener/`
 - `json-api/`
 - `oauth-login/`
+- `webhook-inbox/`
 
 ## Getting Started
 
@@ -140,6 +142,17 @@ crystal run src/oauth_login.cr
 ```
 
 Configure a [GitHub OAuth App](https://github.com/settings/developers) and set `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`. See `oauth-login/README.md`.
+
+### Webhook inbox
+
+```bash
+cd webhook-inbox
+shards install
+export WEBHOOK_SECRET=your_secret
+crystal run src/webhook_inbox.cr
+```
+
+Then open `http://127.0.0.1:3000`. Signed POSTs to `/hooks/inbox` use [kemal-hmac](https://github.com/kemalcr/kemal-hmac); see `webhook-inbox/README.md`.
 
 ### Twitter Clone (`WebSockets`)
 

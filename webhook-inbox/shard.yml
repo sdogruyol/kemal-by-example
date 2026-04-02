@@ -1,0 +1,23 @@
+name: webhook_inbox
+version: 0.1.0
+
+authors:
+  - Bedo
+
+targets:
+  webhook_inbox:
+    main: src/webhook_inbox.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  kemal-hmac:
+    github: kemalcr/kemal-hmac
+  db:
+    github: crystal-lang/crystal-db
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+
+crystal: ">= 1.12.0"
+
+license: MIT

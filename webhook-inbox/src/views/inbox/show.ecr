@@ -1,0 +1,15 @@
+<section class="card">
+  <p class="meta"><a href="/">← Inbox</a></p>
+  <h1 style="margin-top: 0;">Event #<%= event.id %></h1>
+  <p class="meta"><%= event.created_at %> · <code><%= event.signature_status %></code> · <%= HTML.escape(event.content_type) %></p>
+</section>
+
+<section class="card">
+  <h2 style="margin-top: 0; font-size: 1rem;">Body</h2>
+  <pre class="pre"><%= HTML.escape(event.body) %></pre>
+</section>
+
+<section class="card">
+  <h2 style="margin-top: 0; font-size: 1rem;">Headers</h2>
+  <pre class="pre"><%= HTML.escape(event.headers_pretty) %></pre>
+</section>

@@ -1,0 +1,41 @@
+<section class="card">
+  <h1 style="margin-top: 0;">Inbox</h1>
+  <p class="meta">POST payloads to <code>/hooks/inbox</code>. Open this page to inspect stored deliveries.</p>
+
+  <% if secret_on %>
+    <p class="meta"><span class="badge ok">WEBHOOK_SECRET</span> <a href="https://github.com/kemalcr/kemal-hmac">kemal-hmac</a> is <strong>on</strong> for <code>POST /hooks/inbox</code> (headers <code>hmac-client</code>, <code>hmac-timestamp</code>, <code>hmac-token</code>).</p>
+  <% else %>
+    <p class="meta"><span class="badge warn">No secret</span> All POST bodies are accepted. Set <code>WEBHOOK_SECRET</code> to require <a href="https://github.com/kemalcr/kemal-hmac">kemal-hmac</a> signatures.</p>
+  <% end %>
+</section>
+
+<% if events.empty? %>
+  <section class="card">
+    <p class="meta">No webhooks yet. With <code>WEBHOOK_SECRET</code> set, send a signed POST:</p>
+    <pre class="pre">export WEBHOOK_SECRET=your_secret
+crystal run examples/send_webhook.cr</pre>
+  </section>
+<% else %>
+  <section class="card" style="padding: 0; overflow: hidden;">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Received</th>
+          <th>Signature</th>
+          <th>Preview</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% events.each do |event| %>
+          <tr>
+            <td><a href="/events/<%= event.id %>"><%= event.id %></a></td>
+            <td class="meta"><%= event.created_at %></td>
+            <td><code><%= event.signature_status %></code></td>
+            <td class="meta"><%= HTML.escape(event.preview) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+<% end %>
