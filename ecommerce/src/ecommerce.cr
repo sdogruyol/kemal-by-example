@@ -1,4 +1,5 @@
 require "kemal"
+require "kemal-session"
 require "db"
 require "sqlite3"
 
@@ -12,6 +13,12 @@ require "./routes/home"
 require "./routes/auth"
 require "./routes/products"
 require "./routes/cart"
+
+Kemal::Session.config do |config|
+  config.secret = ENV["KEMAL_SESSION_SECRET"]? || "ecommerce-dev-session-secret"
+  config.cookie_name = "ecommerce_session_id"
+  config.gc_interval = 2.minutes
+end
 
 Ecommerce::Schema.setup
 Product.seed_defaults

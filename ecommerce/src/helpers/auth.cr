@@ -3,13 +3,10 @@ module Ecommerce
     extend self
 
     def current_user(env) : User?
-      cookie = env.request.cookies["user_id"]?
-      return unless cookie
+      user_id = env.session.bigint?("user_id")
+      return unless user_id
 
-      user_id = cookie.value
-      return if user_id.empty?
-
-      User.find(user_id.to_i64)
+      User.find(user_id)
     rescue
       nil
     end
@@ -23,11 +20,11 @@ module Ecommerce
     end
 
     def sign_in(env, user : User)
-      env.response.cookies["user_id"] = user.id.to_s
+      env.session.bigint("user_id", user.id.not_nil!)
     end
 
     def sign_out(env)
-      env.response.cookies["user_id"] = ""
+      env.session.destroy
     end
   end
 end
