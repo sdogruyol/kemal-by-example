@@ -35,7 +35,7 @@ class Tweet
     )
   end
 
-  def self.create(display_name : String, username : String, body : String)
+  def self.create(display_name : String, username : String, body : String) : Tweet
     now = Time.utc.to_s
 
     TwitterClone::Database.connection.exec(
@@ -47,10 +47,18 @@ class Tweet
       now,
       now
     )
+
+    id = TwitterClone::Database.connection.query_one(
+      "SELECT last_insert_rowid()",
+      as: Int64
+    )
+
+    find(id).not_nil!
   end
 
-  def update(display_name : String, username : String, body : String)
-    return unless id
+  def update(display_name : String, username : String, body : String) : Tweet?
+    tweet_id = id
+    return unless tweet_id
 
     TwitterClone::Database.connection.exec(
       "UPDATE tweets SET display_name = ?, username = ?, body = ?, updated_at = ? WHERE id = ?",
@@ -58,27 +66,35 @@ class Tweet
       self.class.normalize_username(username),
       body,
       Time.utc.to_s,
-      id
+      tweet_id
     )
+
+    self.class.find(tweet_id)
   end
 
-  def like
-    return unless id
+  def like : Tweet?
+    tweet_id = id
+    return unless tweet_id
 
     TwitterClone::Database.connection.exec(
       "UPDATE tweets SET likes_count = likes_count + 1, updated_at = ? WHERE id = ?",
       Time.utc.to_s,
-      id
+      tweet_id
     )
+
+    self.class.find(tweet_id)
   end
 
-  def delete
-    return unless id
+  def delete : Int64?
+    tweet_id = id
+    return unless tweet_id
 
     TwitterClone::Database.connection.exec(
       "DELETE FROM tweets WHERE id = ?",
-      id
+      tweet_id
     )
+
+    tweet_id
   end
 
   def handle : String

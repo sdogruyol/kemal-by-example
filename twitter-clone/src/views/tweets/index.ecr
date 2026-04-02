@@ -1,6 +1,7 @@
 <section class="hero">
   <h1>Twitter Clone</h1>
   <p>Share quick thoughts, post updates, and interact with a simple Kemal-powered timeline.</p>
+  <p class="live-indicator">Live updates enabled</p>
 </section>
 
 <section class="card">
@@ -28,21 +29,21 @@
   </form>
 </section>
 
-<section class="timeline">
+<section class="timeline" id="timeline">
   <% if tweets.empty? %>
-    <div class="card">
+    <div class="card" id="empty-state">
       <p class="empty-state">The timeline is empty. Create the first tweet.</p>
     </div>
   <% else %>
     <% tweets.each do |tweet| %>
-      <article class="card">
+      <article class="card" data-tweet-id="<%= tweet.id %>">
         <div class="tweet-header">
           <h2><%= tweet.display_name %></h2>
           <span class="handle"><%= tweet.handle %></span>
         </div>
 
         <p class="tweet-body"><%= tweet.body %></p>
-        <p class="meta">Likes: <%= tweet.likes_count %></p>
+        <p class="meta likes-count">Likes: <%= tweet.likes_count %></p>
         <p class="meta">Created at: <%= tweet.created_at %></p>
         <p class="meta">Updated at: <%= tweet.updated_at %></p>
 
@@ -61,3 +62,5 @@
     <% end %>
   <% end %>
 </section>
+
+<script src="/js/timeline.js"></script>
