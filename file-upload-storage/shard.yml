@@ -1,0 +1,21 @@
+name: file_upload_storage
+version: 0.1.0
+
+authors:
+  - Bedo
+
+targets:
+  file_upload_storage:
+    main: src/file_upload_storage.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  db:
+    github: crystal-lang/crystal-db
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+
+crystal: ">= 1.12.0"
+
+license: MIT

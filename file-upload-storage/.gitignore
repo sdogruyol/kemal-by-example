@@ -1,0 +1,13 @@
+/.crystal/
+/lib/
+/bin/
+
+/db/*.db
+/db/*.sqlite
+/db/*.sqlite3
+
+/public/uploads/*
+!/public/uploads/.keep
+
+file_upload_storage
+file_upload_storage.dwarf

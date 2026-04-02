@@ -1,0 +1,25 @@
+<section class="hero">
+  <h1>File Details</h1>
+  <p>Review metadata and access the stored file.</p>
+</section>
+
+<section class="card">
+  <% if stored_file.image? %>
+    <img class="preview" src="<%= stored_file.public_path %>" alt="<%= stored_file.original_name %>">
+  <% end %>
+
+  <h2><%= stored_file.original_name %></h2>
+  <p class="meta">Stored name: <%= stored_file.stored_name %></p>
+  <p class="meta">MIME type: <%= stored_file.mime_type %></p>
+  <p class="meta">Size: <%= stored_file.formatted_size %></p>
+  <p class="meta">Uploaded: <%= stored_file.created_at %></p>
+
+  <div class="actions">
+    <a class="button-link" href="<%= stored_file.public_path %>" target="_blank">Open file</a>
+    <a class="button-link secondary" href="/files">Back to files</a>
+
+    <form action="/files/<%= stored_file.id %>/delete" method="post">
+      <button class="danger" type="submit">Delete file</button>
+    </form>
+  </div>
+</section>
