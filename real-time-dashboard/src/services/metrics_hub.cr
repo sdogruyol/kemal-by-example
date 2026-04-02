@@ -50,7 +50,7 @@ module RealTimeDashboard
 
     private def broadcast_snapshot(snapshot : MetricSnapshot)
       message = {
-        event: "metric_snapshot",
+        event:    "metric_snapshot",
         snapshot: snapshot.to_payload,
       }.to_json
 

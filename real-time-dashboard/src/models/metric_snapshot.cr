@@ -10,7 +10,7 @@ class MetricSnapshot
     @cpu_percent : Float64,
     @memory_percent : Float64,
     @created_at : String = Time.local.to_s("%H:%M:%S"),
-    @id : Int64? = nil
+    @id : Int64? = nil,
   )
   end
 
@@ -57,10 +57,10 @@ class MetricSnapshot
 
   def to_payload
     {
-      id: id,
-      cpu_percent: cpu_percent.round(2),
+      id:             id,
+      cpu_percent:    cpu_percent.round(2),
       memory_percent: memory_percent.round(2),
-      created_at: created_at,
+      created_at:     created_at,
     }
   end
 end

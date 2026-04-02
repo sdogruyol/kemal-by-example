@@ -16,7 +16,7 @@ class User
     @password_hash : String,
     @id : Int64? = nil,
     @created_at : String = Time.utc.to_s,
-    @updated_at : String = Time.utc.to_s
+    @updated_at : String = Time.utc.to_s,
   )
   end
 

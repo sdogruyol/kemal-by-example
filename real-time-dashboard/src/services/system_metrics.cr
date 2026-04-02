@@ -62,7 +62,7 @@ module RealTimeDashboard
       when "G" then amount * 1024_f64 * 1024_f64 * 1024_f64
       when "M" then amount * 1024_f64 * 1024_f64
       when "K" then amount * 1024_f64
-      else amount
+      else          amount
       end
     end
 

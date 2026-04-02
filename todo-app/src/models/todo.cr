@@ -14,7 +14,7 @@ class Todo
     @completed : Bool = false,
     @id : Int64? = nil,
     @created_at : String = Time.utc.to_s,
-    @updated_at : String = Time.utc.to_s
+    @updated_at : String = Time.utc.to_s,
   )
   end
 

@@ -14,7 +14,7 @@ class CartItem
     @quantity : Int64 = 1_i64,
     @id : Int64? = nil,
     @created_at : String = Time.utc.to_s,
-    @updated_at : String = Time.utc.to_s
+    @updated_at : String = Time.utc.to_s,
   )
   end
 
@@ -38,7 +38,7 @@ class CartItem
       @description : String,
       @price_cents : Int64,
       @inventory_count : Int64,
-      @id : Int64? = nil
+      @id : Int64? = nil,
     )
     end
 

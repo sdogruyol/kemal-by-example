@@ -14,7 +14,7 @@ class StoredFile
     @mime_type : String,
     @size_bytes : Int64,
     @created_at : String = Time.local.to_s("%Y-%m-%d %H:%M:%S"),
-    @id : Int64? = nil
+    @id : Int64? = nil,
   )
   end
 

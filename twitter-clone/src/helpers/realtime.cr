@@ -40,7 +40,7 @@ module TwitterClone
 
     def broadcast_tweet_deleted(tweet_id : Int64)
       broadcast({
-        event: "tweet_deleted",
+        event:    "tweet_deleted",
         tweet_id: tweet_id,
       }.to_json)
     end
@@ -59,14 +59,14 @@ module TwitterClone
 
     private def tweet_payload(tweet : Tweet)
       {
-        id: tweet.id,
+        id:           tweet.id,
         display_name: tweet.display_name,
-        username: tweet.username,
-        handle: tweet.handle,
-        body: tweet.body,
-        likes_count: tweet.likes_count,
-        created_at: tweet.created_at,
-        updated_at: tweet.updated_at,
+        username:     tweet.username,
+        handle:       tweet.handle,
+        body:         tweet.body,
+        likes_count:  tweet.likes_count,
+        created_at:   tweet.created_at,
+        updated_at:   tweet.updated_at,
       }
     end
   end

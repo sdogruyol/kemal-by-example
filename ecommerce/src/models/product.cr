@@ -16,7 +16,7 @@ class Product
     @inventory_count : Int64 = 0_i64,
     @id : Int64? = nil,
     @created_at : String = Time.utc.to_s,
-    @updated_at : String = Time.utc.to_s
+    @updated_at : String = Time.utc.to_s,
   )
   end
 
