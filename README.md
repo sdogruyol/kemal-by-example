@@ -18,14 +18,14 @@ This repository collects example applications built with `Kemal`, with a focus o
 - Provide practical example projects instead of isolated snippets
 - Keep each application easy to read, extend, and learn from
 
-## Completed Projects
+## Projects
 
-- Blog
-- E-commerce
-- Real-time Dashboard
-- Twitter clone
-- Todo app
-- URL shortener
+- `Blog` - A server-rendered blog with post CRUD, built with `Kemal`, `SQLite`, and `ECR`.
+- `E-commerce` - A small storefront with authentication and cart flow, built with `Kemal`, `SQLite`, `ECR`, and `kemal-session`.
+- `Real-time Dashboard` - A live monitoring panel for CPU and memory metrics, built with `Kemal`, `SQLite`, `ECR`, `WebSockets`, and Crystal concurrency.
+- `Twitter clone` - A lightweight social timeline with realtime updates, built with `Kemal`, `SQLite`, `ECR`, and `WebSockets`.
+- `Todo app` - A simple task manager with full todo CRUD, built with `Kemal`, `SQLite`, and `ECR`.
+- `URL shortener` - A compact link shortener with redirect tracking, built with `Kemal`, `SQLite`, and `ECR`.
 
 ## Directory Structure
 
