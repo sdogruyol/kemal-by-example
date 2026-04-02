@@ -1,0 +1,10 @@
+/.crystal/
+/lib/
+/bin/
+
+/db/*.db
+/db/*.sqlite
+/db/*.sqlite3
+
+oauth_login
+oauth_login.dwarf

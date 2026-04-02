@@ -1,0 +1,23 @@
+name: oauth_login
+version: 0.1.0
+
+authors:
+  - Bedo
+
+targets:
+  oauth_login:
+    main: src/oauth_login.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  kemal-session:
+    github: kemalcr/kemal-session
+  db:
+    github: crystal-lang/crystal-db
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+
+crystal: ">= 1.12.0"
+
+license: MIT

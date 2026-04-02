@@ -27,6 +27,7 @@ This repository collects practical projects built with [`Kemal`](https://kemalcr
 - `Todo app` - A simple task manager with full todo CRUD, built with `Kemal`, `SQLite`, and `ECR`.
 - `URL shortener` - A compact link shortener with redirect tracking, built with `Kemal`, `SQLite`, and `ECR`.
 - `JSON API` - A REST JSON API for notes (`GET`/`POST`/`PUT`/`PATCH`/`DELETE` under `/api/notes`), built with `Kemal`, `SQLite`, and Crystal’s `JSON` module.
+- `OAuth login` - GitHub OAuth2 sign-in with session-backed user records, built with `Kemal`, `SQLite`, `ECR`, and `kemal-session`.
 
 ## Realtime Projects (`WebSockets`)
 
@@ -43,6 +44,7 @@ This repository collects practical projects built with [`Kemal`](https://kemalcr
 - `todo-app/`
 - `url-shortener/`
 - `json-api/`
+- `oauth-login/`
 
 ## Getting Started
 
@@ -128,6 +130,16 @@ crystal run src/json_api.cr
 ```
 
 Then open `http://127.0.0.1:3000` or call `http://127.0.0.1:3000/api/notes`.
+
+### OAuth login
+
+```bash
+cd oauth-login
+shards install
+crystal run src/oauth_login.cr
+```
+
+Configure a [GitHub OAuth App](https://github.com/settings/developers) and set `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`. See `oauth-login/README.md`.
 
 ### Twitter Clone (`WebSockets`)
 
