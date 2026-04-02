@@ -24,10 +24,13 @@ This repository collects example applications built with `Kemal`, with a focus o
 - `Blog` - A server-rendered blog with post CRUD, built with `Kemal`, `SQLite`, and `ECR`.
 - `E-commerce` - A small storefront with authentication and cart flow, built with `Kemal`, `SQLite`, `ECR`, and `kemal-session`.
 - `File Upload & Storage` - A multipart upload manager with public file serving and metadata storage, built with `Kemal`, `SQLite`, and `ECR`.
-- `Real-time Dashboard` - A live monitoring panel for CPU and memory metrics, built with `Kemal`, `SQLite`, `ECR`, `WebSockets`, and Crystal concurrency.
-- `Twitter clone` - A lightweight social timeline with realtime updates, built with `Kemal`, `SQLite`, `ECR`, and `WebSockets`.
 - `Todo app` - A simple task manager with full todo CRUD, built with `Kemal`, `SQLite`, and `ECR`.
 - `URL shortener` - A compact link shortener with redirect tracking, built with `Kemal`, `SQLite`, and `ECR`.
+
+## Realtime Projects (`WebSockets`)
+
+- `Real-time Dashboard` - A live monitoring panel for CPU and memory metrics, built with `Kemal`, `SQLite`, `ECR`, `WebSockets`, and Crystal concurrency.
+- `Twitter clone` - A lightweight Twitter clone with realtime updates, built with `Kemal`, `SQLite`, `ECR`, and `WebSockets`.
 
 ## Directory Structure
 
@@ -84,7 +87,7 @@ crystal run src/file_upload_storage.cr
 
 Then open `http://127.0.0.1:3000`.
 
-### Real-time Dashboard
+### Real-time Dashboard (`WebSockets`)
 
 ```bash
 cd real-time-dashboard
@@ -114,7 +117,7 @@ crystal run src/url_shortener.cr
 
 Then open `http://127.0.0.1:3000`.
 
-### Twitter Clone
+### Twitter Clone (`WebSockets`)
 
 ```bash
 cd twitter-clone
