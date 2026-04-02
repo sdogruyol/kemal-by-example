@@ -7,6 +7,7 @@ A lightweight Twitter-style timeline built with `Kemal`, `SQLite`, and `ECR`.
 - Framework: `Kemal`
 - Database: `SQLite`
 - Templating: `ECR`
+- Realtime transport: `WebSockets`
 - Language: `Crystal`
 
 ## Structure
