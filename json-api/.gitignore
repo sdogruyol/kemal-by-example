@@ -1,0 +1,10 @@
+/.crystal/
+/lib/
+/bin/
+
+/db/*.db
+/db/*.sqlite
+/db/*.sqlite3
+
+json_api
+json_api.dwarf

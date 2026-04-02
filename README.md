@@ -26,6 +26,7 @@ This repository collects practical projects built with [`Kemal`](https://kemalcr
 - `File Upload & Storage` - A multipart upload manager with public file serving and metadata storage, built with `Kemal`, `SQLite`, and `ECR`.
 - `Todo app` - A simple task manager with full todo CRUD, built with `Kemal`, `SQLite`, and `ECR`.
 - `URL shortener` - A compact link shortener with redirect tracking, built with `Kemal`, `SQLite`, and `ECR`.
+- `JSON API` - A REST JSON API for notes (`GET`/`POST`/`PUT`/`PATCH`/`DELETE` under `/api/notes`), built with `Kemal`, `SQLite`, and Crystal’s `JSON` module.
 
 ## Realtime Projects (`WebSockets`)
 
@@ -41,6 +42,7 @@ This repository collects practical projects built with [`Kemal`](https://kemalcr
 - `twitter-clone/`
 - `todo-app/`
 - `url-shortener/`
+- `json-api/`
 
 ## Getting Started
 
@@ -116,6 +118,16 @@ crystal run src/url_shortener.cr
 ```
 
 Then open `http://127.0.0.1:3000`.
+
+### JSON API
+
+```bash
+cd json-api
+shards install
+crystal run src/json_api.cr
+```
+
+Then open `http://127.0.0.1:3000` or call `http://127.0.0.1:3000/api/notes`.
 
 ### Twitter Clone (`WebSockets`)
 
