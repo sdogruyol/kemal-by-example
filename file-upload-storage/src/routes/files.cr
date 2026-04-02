@@ -20,7 +20,7 @@ post "/files/upload" do |env|
     next ""
   end
 
-  max_size = 10_i64 * 1024 * 1024
+  max_size = 50_i64 * 1024 * 1024
   extension = ::File.extname(original_name).downcase
   stored_name = "#{Random::Secure.hex(16)}#{extension}"
   destination = ::File.join(Kemal.config.public_folder, "uploads", stored_name)
@@ -34,7 +34,7 @@ post "/files/upload" do |env|
 
   if copied_bytes > max_size
     ::File.delete(destination) if ::File.exists?(destination)
-    env.redirect "/files?error=File+size+must+be+10MB+or+smaller."
+    env.redirect "/files?error=File+size+must+be+50MB+or+smaller."
     next ""
   end
 
