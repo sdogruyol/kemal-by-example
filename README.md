@@ -1,8 +1,8 @@
 # Kemal By Example
 
-This repository collects example applications built with `Kemal`, with a focus on clarity, simplicity, and practical full-stack patterns.
+This repository collects practical projects built with [`Kemal`](https://kemalcr.com/), designed to show how productive, readable, and capable the framework can be in real applications.
 
-`Kemal` stands out by making web development feel lightweight without sacrificing capability. It is easy to read, fast to iterate on, and powerful enough to support real application structure with clean routes, server-rendered pages, straightforward organization, and approachable WebSocket support for realtime features. The goal of this repository is to explore that balance through multiple hands-on projects.
+[`Kemal`](https://kemalcr.com/) stands out by making web development feel lightweight without sacrificing capability. It is easy to read, fast to iterate on, and powerful enough to support clean routes, server-rendered pages, straightforward project organization, sessions, file uploads, and realtime features with WebSockets. The goal of this repository is to present practical projects that show and demonstrate the power of Kemal through hands-on examples.
 
 ## Shared Stack
 
