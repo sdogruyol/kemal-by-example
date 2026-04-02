@@ -22,6 +22,7 @@ This repository collects example applications built with `Kemal`, with a focus o
 
 - Blog
 - E-commerce
+- Real-time Dashboard
 - Twitter clone
 - Todo app
 - URL shortener
@@ -30,6 +31,7 @@ This repository collects example applications built with `Kemal`, with a focus o
 
 - `blog/`
 - `ecommerce/`
+- `real-time-dashboard/`
 - `twitter-clone/`
 - `todo-app/`
 - `url-shortener/`
@@ -65,6 +67,16 @@ Then open `http://127.0.0.1:3000`.
 cd ecommerce
 shards install
 crystal run src/ecommerce.cr
+```
+
+Then open `http://127.0.0.1:3000`.
+
+### Real-time Dashboard
+
+```bash
+cd real-time-dashboard
+shards install
+crystal run src/real_time_dashboard.cr
 ```
 
 Then open `http://127.0.0.1:3000`.

@@ -1,0 +1,62 @@
+<% latest = snapshots.last? %>
+
+<section class="hero">
+  <h1>Real-time Dashboard</h1>
+  <p>Live system metrics streamed over WebSockets, collected with concurrent Crystal fibers, and rendered as a lightweight monitoring panel in the browser.</p>
+
+  <div class="status-pill">
+    <span id="connection-dot" class="status-dot"></span>
+    <span id="connection-status">Connecting...</span>
+  </div>
+</section>
+
+<section class="metrics-grid">
+  <article class="card">
+    <p class="metric-label">CPU Usage</p>
+    <p id="cpu-value" class="metric-value"><%= latest ? latest.cpu_percent.round(2) : 0.0 %>%</p>
+    <p class="meta">Current processor load</p>
+  </article>
+
+  <article class="card">
+    <p class="metric-label">Memory Usage</p>
+    <p id="memory-value" class="metric-value"><%= latest ? latest.memory_percent.round(2) : 0.0 %>%</p>
+    <p class="meta">Current memory pressure</p>
+  </article>
+
+  <article class="card">
+    <p class="metric-label">Last Updated</p>
+    <p id="updated-at" class="metric-value"><%= latest ? latest.created_at : "--:--:--" %></p>
+    <p class="meta">Latest sample timestamp</p>
+  </article>
+</section>
+
+<section class="charts-grid">
+  <article class="card">
+    <div class="chart-title">
+      <h2>CPU Trend</h2>
+      <span class="meta">Last 30 samples</span>
+    </div>
+    <svg class="chart-frame" viewBox="0 0 320 160" preserveAspectRatio="none">
+      <line class="chart-grid-line" x1="0" y1="40" x2="320" y2="40"></line>
+      <line class="chart-grid-line" x1="0" y1="80" x2="320" y2="80"></line>
+      <line class="chart-grid-line" x1="0" y1="120" x2="320" y2="120"></line>
+      <polyline id="cpu-chart" class="chart-line cpu" points=""></polyline>
+    </svg>
+  </article>
+
+  <article class="card">
+    <div class="chart-title">
+      <h2>Memory Trend</h2>
+      <span class="meta">Last 30 samples</span>
+    </div>
+    <svg class="chart-frame" viewBox="0 0 320 160" preserveAspectRatio="none">
+      <line class="chart-grid-line" x1="0" y1="40" x2="320" y2="40"></line>
+      <line class="chart-grid-line" x1="0" y1="80" x2="320" y2="80"></line>
+      <line class="chart-grid-line" x1="0" y1="120" x2="320" y2="120"></line>
+      <polyline id="memory-chart" class="chart-line memory" points=""></polyline>
+    </svg>
+  </article>
+</section>
+
+<script id="initial-metrics" type="application/json"><%= history_json %></script>
+<script src="/js/dashboard.js"></script>
