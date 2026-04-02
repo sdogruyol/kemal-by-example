@@ -16,12 +16,42 @@ module RealTimeDashboard
     end
 
     private def cpu_percent : Float64
-      output = darwin? ? run_command("top", "-l", "1", "-n", "0") : run_command("top", "-b", "-n", "1")
+      return cpu_percent_darwin if darwin?
 
-      idle = output.match(/(\d+(?:\.\d+)?)%\s*idle/).try(&.[1].to_f64) || 0.0
-      clamp(100.0 - idle)
+      cpu_percent_linux_proc_stat
     rescue
       0.0
+    end
+
+    private def cpu_percent_darwin : Float64
+      output = run_command("top", "-l", "1", "-n", "0")
+      idle = output.match(/(\d+(?:\.\d+)?)%\s*idle/).try(&.[1].to_f64) || 0.0
+      clamp(100.0 - idle)
+    end
+
+    # Linux procps-ng `top` prints idle as "99.7 id" without a % after the number; parsing it is brittle.
+    # /proc/stat diffs are the standard approach (works on WSL and bare metal).
+    private def cpu_percent_linux_proc_stat : Float64
+      total1, idle1 = read_proc_stat_cpu
+      sleep 50.milliseconds
+      total2, idle2 = read_proc_stat_cpu
+
+      totald = total2 - total1
+      return 0.0 if totald <= 0.0
+
+      idled = idle2 - idle1
+      clamp(100.0 * (1.0 - idled / totald))
+    end
+
+    private def read_proc_stat_cpu : {Float64, Float64}
+      line = File.read("/proc/stat").each_line.find(&.starts_with?("cpu "))
+      raise "no cpu line in /proc/stat" unless line
+
+      parts = line.split
+      values = parts[1..].map(&.to_f64)
+      idle = values[3] + values[4] # idle + iowait
+      total = values.sum
+      {total, idle}
     end
 
     private def memory_percent : Float64
