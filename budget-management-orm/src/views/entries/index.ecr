@@ -1,0 +1,105 @@
+<section class="card">
+  <h1>Budget overview</h1>
+  <p class="muted">Income and expenses stored with <strong>Crecto</strong> on SQLite. Amounts are kept in cents internally.</p>
+
+  <div class="summary">
+    <div class="card" style="margin:0">
+      <dl>
+        <dt>Total income</dt>
+        <dd class="positive"><%= BudgetManagementOrm::Money.format_cents(total_income_cents) %></dd>
+      </dl>
+    </div>
+    <div class="card" style="margin:0">
+      <dl>
+        <dt>Total expenses</dt>
+        <dd class="negative"><%= BudgetManagementOrm::Money.format_cents(total_expense_cents) %></dd>
+      </dl>
+    </div>
+    <div class="card" style="margin:0">
+      <dl>
+        <dt>Balance</dt>
+        <dd class="<%= balance_cents >= 0 ? "positive" : "negative" %>">
+          <%= BudgetManagementOrm::Money.format_cents(balance_cents) %>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Add entry</h2>
+  <form class="stack" action="/entries" method="post">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" type="text" name="title" placeholder="Salary, rent, groceries…" required>
+    </div>
+    <div>
+      <label for="kind">Type</label>
+      <select id="kind" name="kind">
+        <option value="income">Income</option>
+        <option value="expense" selected>Expense</option>
+      </select>
+    </div>
+    <div>
+      <label for="amount">Amount</label>
+      <input id="amount" type="text" name="amount" inputmode="decimal" placeholder="0.00" required>
+    </div>
+    <div>
+      <label for="notes">Notes</label>
+      <textarea id="notes" name="notes" placeholder="Optional"></textarea>
+    </div>
+    <div>
+      <button type="submit">Save entry</button>
+    </div>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Ledger</h2>
+
+  <% if entries.empty? %>
+    <p class="empty-state">No entries yet. Add your first income or expense above.</p>
+  <% else %>
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Notes</th>
+            <th>Updated</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% entries.each do |entry| %>
+            <tr>
+              <td><strong><%= entry.title %></strong></td>
+              <td>
+                <% if entry.income? %>
+                  <span class="tag tag-income">Income</span>
+                <% else %>
+                  <span class="tag tag-expense">Expense</span>
+                <% end %>
+              </td>
+              <td class="<%= entry.income? ? "positive" : "negative" %>">
+                <%= entry.income? ? "" : "−" %><%= BudgetManagementOrm::Money.format_cents(entry.amount_cents) %>
+              </td>
+              <td class="muted"><% n = entry.notes || "" %><%= n.empty? ? "—" : n %></td>
+              <td class="muted"><%= entry.updated_at %></td>
+              <td>
+                <div class="actions">
+                  <a class="button-link secondary" href="/entries/<%= entry.id %>/edit">Edit</a>
+                  <form action="/entries/<%= entry.id %>/delete" method="post">
+                    <button class="danger" type="submit">Delete</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</section>

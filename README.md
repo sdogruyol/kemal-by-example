@@ -29,6 +29,7 @@ This repository collects practical projects built with [`Kemal`](https://kemalcr
 - `JSON API` - A REST JSON API for notes (`GET`/`POST`/`PUT`/`PATCH`/`DELETE` under `/api/notes`), built with `Kemal`, `SQLite`, and Crystal’s `JSON` module.
 - `OAuth login` - GitHub OAuth2 sign-in with session-backed user records, built with `Kemal`, `SQLite`, `ECR`, and `kemal-session`.
 - `Webhook inbox` - Inbound webhook receiver using [kemal-hmac](https://github.com/kemalcr/kemal-hmac) when `WEBHOOK_SECRET` is set, plus a small inbox UI, built with `Kemal`, `SQLite`, and `ECR`.
+- `Budget management ORM` - A small income and expense ledger with totals and balance, built with `Kemal`, `SQLite`, `ECR`, and [Crecto](https://github.com/Crecto/crecto).
 
 ## Realtime Projects (`WebSockets`)
 
@@ -47,6 +48,7 @@ This repository collects practical projects built with [`Kemal`](https://kemalcr
 - `json-api/`
 - `oauth-login/`
 - `webhook-inbox/`
+- `budget-management-orm/`
 
 ## Getting Started
 
@@ -112,6 +114,16 @@ crystal run src/todo_app.cr
 ```
 
 Then open `http://127.0.0.1:3000`.
+
+### Budget management with ORM `crecto`
+
+```bash
+cd budget-management-orm
+shards install
+crystal run src/budget_management_orm.cr
+```
+
+Then open `http://127.0.0.1:3000`. See `budget-management-orm/README.md`.
 
 ### URL Shortener
 

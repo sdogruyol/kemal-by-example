@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Budget (Crecto ORM)</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: #f1f5f9;
+        color: #0f172a;
+      }
+
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 16px 48px;
+      }
+
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .stack > * + * {
+        margin-top: 12px;
+      }
+
+      .summary {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      .summary dl {
+        margin: 0;
+      }
+
+      .summary dt {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #64748b;
+      }
+
+      .summary dd {
+        margin: 6px 0 0;
+        font-size: 1.35rem;
+        font-weight: 600;
+      }
+
+      .positive {
+        color: #15803d;
+      }
+
+      .negative {
+        color: #b91c1c;
+      }
+
+      .muted {
+        color: #64748b;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 10px 8px;
+        border-bottom: 1px solid #e2e8f0;
+        vertical-align: top;
+      }
+
+      th {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: #64748b;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .tag-income {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      .tag-expense {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      form {
+        margin: 0;
+      }
+
+      input[type="text"],
+      textarea,
+      select {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font: inherit;
+        background: #fff;
+      }
+
+      textarea {
+        min-height: 80px;
+        resize: vertical;
+      }
+
+      button,
+      .button-link {
+        display: inline-block;
+        border: 0;
+        border-radius: 8px;
+        padding: 10px 14px;
+        background: #2563eb;
+        color: #fff;
+        font: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .button-link.secondary,
+      button.secondary {
+        background: #64748b;
+      }
+
+      button.danger {
+        background: #dc2626;
+      }
+
+      .empty-state {
+        color: #64748b;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <%= content %>
+    </main>
+  </body>
+</html>

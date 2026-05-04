@@ -1,0 +1,30 @@
+<section class="card">
+  <h1>Edit entry</h1>
+  <p class="muted">Update this ledger line.</p>
+
+  <form class="stack" action="/entries/<%= entry.id %>" method="post">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" type="text" name="title" value="<%= entry.title %>" required>
+    </div>
+    <div>
+      <label for="kind">Type</label>
+      <select id="kind" name="kind">
+        <option value="income" <%= "selected" if entry.income? %>>Income</option>
+        <option value="expense" <%= "selected" if entry.expense? %>>Expense</option>
+      </select>
+    </div>
+    <div>
+      <label for="amount">Amount</label>
+      <input id="amount" type="text" name="amount" inputmode="decimal" value="<%= amount_display %>" required>
+    </div>
+    <div>
+      <label for="notes">Notes</label>
+      <textarea id="notes" name="notes"><%= entry.notes || "" %></textarea>
+    </div>
+    <div class="actions">
+      <button type="submit">Update</button>
+      <a class="button-link secondary" href="/entries">Cancel</a>
+    </div>
+  </form>
+</section>

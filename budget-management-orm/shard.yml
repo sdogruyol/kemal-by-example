@@ -1,0 +1,21 @@
+name: budget_management_orm
+version: 0.1.0
+
+authors:
+  - Kemal by Example
+
+targets:
+  budget_management_orm:
+    main: src/budget_management_orm.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  crecto:
+    github: Crecto/crecto
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+
+crystal: ">= 1.12.0"
+
+license: MIT
